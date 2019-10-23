@@ -8,15 +8,16 @@ console.log(name);
 
 // App Bewertung
 const maxHöhe = 100;
-let anzahl = 5;
-var bewertung = 25;
+let anzahl = 0;
+var bewertung = 0;
+let ergebnis = 0;
 
 console.log(maxHöhe, anzahl, bewertung);
 
 //Bewertung
 ++anzahl;
 let neuBewertung = 75;
-let ergebnis = bewertung + (neuBewertung / anzahl);
+ergebnis = bewertung + (neuBewertung / anzahl);
 console.log(ergebnis);
 const test = 5;
 let test2 = 5;
@@ -25,15 +26,15 @@ console.log(test2);
 
 
 //User eingabe
-//const readline = require('readline');
-//const eingabe = readline.createInterface({input: process.stdin, output: process.stdout});
-/*eingabe.question('Ihr Bewertung:', function(antwort){
+const readline = require('readline');
+const eingabe = readline.createInterface({input: process.stdin, output: process.stdout});
+eingabe.question('Ihr Bewertung:', function(antwort){
     if(antwort <= 100) {
         ++anzahl;
         bewertungRechnung( bewertung, antwort, anzahl);
         eingabe.close();
     }
-    if(antwort > 100) {
+    else if(antwort > 100) {
         console.log("Höchst Bewertung ist 100");
         eingabe.close();
     }
@@ -41,25 +42,26 @@ console.log(test2);
         console.log("es sind nur Zahlen erlaubt");
         eingabe.close();
     }
-});*/
+});
 
 //Schleife
-//eingabe.question('Zahl der Wiederhohlungen:', function(n){
-//    console.log(n);
-//eingabe.close();
-//});
-let n = 0;
+eingabe.question('Zahl der Wiederhohlungen:', function(n){
+    let m = 0;
 let random = 0;
-while ( n < 5) {
-    n++;
+while ( n != m) {
+    m++;
     anzahl++;
     random = Math.floor(Math.random() * 100);
     bewertungRechnung(bewertung, random, anzahl);
 }
+    console.log(n);
+//eingabe.close();
+});
 
 function bewertungRechnung ( gesBewert, zahl, lauf) {
-    gesBewert += (zahl / lauf);
+    let tast = 0;
+    tast = ((gesBewert * (lauf - 1))  + zahl) / lauf;
     console.log(`Die ${lauf}. Bewertungen`);
     console.log(`Die Bewertung ist ${zahl}`);
-    console.log(`Neu Gesamt Bewertung ist ${gesBewert}`);
+    console.log(`Neu Gesamt Bewertung ist ${tast}`);
 }
