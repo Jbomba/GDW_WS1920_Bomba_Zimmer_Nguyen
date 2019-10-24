@@ -74,4 +74,8 @@ function bewertungRechnung ( gesBewert, zahl, lauf) {
 function logBewertung (bezeichnung, lauf, zahl) {
     //let log = [bezeichnung, lauf, zahl];
     //console.log(log.length, log[2])
+
+    let ratings = { name: bezeichnung, anzahl: lauf, bewertung: zahl};
+    console.log(ratings.name);
+    //Erzeugung von Instanzen und speichern in DB
 }
