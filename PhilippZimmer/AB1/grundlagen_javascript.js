@@ -58,7 +58,7 @@ while ( n != m) {
     anzahl++;
     random = Math.floor(Math.random() * 100);
     bewertungRechnung(bewertung, random, anzahl);
-    logBewertung(name, anzahl, random);
+    logBewertung(name, anzahl, random, bewertung);
 }
 eingabe.close();
 });
@@ -71,11 +71,16 @@ function bewertungRechnung ( gesBewert, zahl, lauf) {
     console.log(`Neu Gesamt Bewertung ist ${tast}`);
 }
 
-function logBewertung (bezeichnung, lauf, zahl) {
+function logBewertung (bezeichnung, lauf, zahl, gesBewert) {
     //let log = [bezeichnung, lauf, zahl];
     //console.log(log.length, log[2])
 
-    let ratings = { name: bezeichnung, anzahl: lauf, bewertung: zahl};
+    let ratings = { name: bezeichnung, 
+                    anzahl: lauf, 
+                    bewertung: zahl, 
+                    dSchnitt: () => ((gesBewert * (lauf - 1))  + zahl) / lauf
+    };
     console.log(ratings.name);
+    console.log(ratings.dSchnitt());
     //Erzeugung von Instanzen und speichern in DB
 }
