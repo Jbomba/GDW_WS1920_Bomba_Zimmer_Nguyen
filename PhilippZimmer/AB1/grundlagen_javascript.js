@@ -8,9 +8,9 @@ console.log(name);
 
 // App Bewertung
 const maxHöhe = 100;
-let anzahl = 0;
-var bewertung = 0;
-let ergebnis = 0;
+var anzahl = 5;
+var bewertung = 50;
+var ergebnis = 0;
 
 console.log(maxHöhe, anzahl, bewertung);
 
@@ -28,13 +28,15 @@ console.log(test2);
 //User eingabe
 const readline = require('readline');
 const eingabe = readline.createInterface({input: process.stdin, output: process.stdout});
-eingabe.question('Ihr Bewertung:', function(antwort){
-    if(antwort <= 100) {
+/*eingabe.question('Ihr Bewertung:', function(antwort){
+    var ansNumb = Number(antwort);
+    //Liest antwort als string ein!
+    if(antwort <= maxHöhe) {
         ++anzahl;
-        bewertungRechnung( bewertung, antwort, anzahl);
-        eingabe.close();
+        bewertungRechnung( bewertung, ansNumb, anzahl);
+        eingabe.pause();
     }
-    else if(antwort > 100) {
+    else if(antwort > maxHöhe) {
         console.log("Höchst Bewertung ist 100");
         eingabe.close();
     }
@@ -42,9 +44,12 @@ eingabe.question('Ihr Bewertung:', function(antwort){
         console.log("es sind nur Zahlen erlaubt");
         eingabe.close();
     }
-});
+});*/
 
 //Schleife
+//const readline = require('readline');
+//const eingabe = readline.createInterface({input: process.stdin, output: process.stdout});
+eingabe.resume;
 eingabe.question('Zahl der Wiederhohlungen:', function(n){
     let m = 0;
 let random = 0;
@@ -53,9 +58,9 @@ while ( n != m) {
     anzahl++;
     random = Math.floor(Math.random() * 100);
     bewertungRechnung(bewertung, random, anzahl);
+    logBewertung(name, anzahl, random);
 }
-    console.log(n);
-//eingabe.close();
+eingabe.close();
 });
 
 function bewertungRechnung ( gesBewert, zahl, lauf) {
@@ -64,4 +69,9 @@ function bewertungRechnung ( gesBewert, zahl, lauf) {
     console.log(`Die ${lauf}. Bewertungen`);
     console.log(`Die Bewertung ist ${zahl}`);
     console.log(`Neu Gesamt Bewertung ist ${tast}`);
+}
+
+function logBewertung (bezeichnung, lauf, zahl) {
+    //let log = [bezeichnung, lauf, zahl];
+    //console.log(log.length, log[2])
 }
