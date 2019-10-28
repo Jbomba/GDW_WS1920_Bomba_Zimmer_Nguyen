@@ -1,6 +1,3 @@
-//Aufgabe 1 - Array
-
-
 const maximal = 100
 
 let anzahl_der_Bewertungen = 0
