@@ -30,7 +30,7 @@ input: process.stdin,
 output: process.stdout
 })
 
-//Aufgabe 3,4,5
+//Aufgabe 3,4
 let fragen = function(){
     rl.question('Bewerten: ', function(bewertung){
         if(bewertung<=maximal){
