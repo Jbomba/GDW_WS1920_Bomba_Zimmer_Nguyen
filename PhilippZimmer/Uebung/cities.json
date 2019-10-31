@@ -1,0 +1,53 @@
+//10 städte nach größe + bundesland, als Objekt
+[
+    {
+        "id":1,
+        "name":"Berlin",
+        "Bundesland":"Berlin"
+    },
+    {
+        "id":2,
+        "name":"Hamburg",
+        "Bundesland":"Hamburg"
+    },
+    {
+        "id":3,
+        "name":"Muenchen",
+        "Bundesland":"Bayern"
+    },
+    {
+        "id":4,
+        "name":"Koeln",
+        "Bundesland":"Nordrhein Westfalen"
+    },
+    {
+        "id":5,
+        "name":"Frankfurt am Main",
+        "Bundesland":"Hessen"
+    },
+    {
+        "id":6,
+        "name":"Stuttgart",
+        "Bundesland":"Baden-Wuerttenberg"
+    },
+    {
+        "id":7,
+        "name":"Duesseldorf",
+        "Bundesland":"Nordrhein Westfalen"
+    },
+    {
+        "id":8,
+        "name":"Dortmund",
+        "Bundesland":"Nordrhein Westfalen"
+    },
+    {
+        "id":9,
+        "name":"Leipzig",
+        "Bundesland":"Sachsen"
+    },
+    {
+        "id":10,
+        "name":"Essen",
+        "Bundesland":"Nordrhein Westfalen"
+    }
+]
