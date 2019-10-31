@@ -1,7 +1,5 @@
-const JSONReader = require ('./api/JSONReader.js');
+const JSONReader = require ('./myModules/mymodule.js');
 
-JSONReader.readJSON('user.json',(err,result)=> {
+JSONReader.readJSON('cities.json',(err,result)=> {
     console.log(result);
 })
-
-JSON.parse()
