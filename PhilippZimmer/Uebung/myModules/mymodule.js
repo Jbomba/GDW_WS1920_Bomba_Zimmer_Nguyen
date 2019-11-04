@@ -1,22 +1,30 @@
 const fs = require('fs');
 
-/*const readJSON = ( path, callback) => {
-    fs.readFile('./../cities.json','utf8', callback);
-}*/
-
-fs.readFile( './../cities.json')
-
-function stadtFinden ( suche ) {
+const readJSON = ( path, callback) => {
+    fs.readFile(path,'utf8', callback);
 }
 
-function stadtLoeschen ( suche ) {
+const writeJSON = ( path, callback ) => {
+    fs.writeFile ( path, 'utf8', callback);
+}
+
+module.exports = {
+    readJSON, writeJSON //stadtFinden, stadtLoeschen, stadtHinzuf
+};
+
+const stadtFinden = ( suche ) => {
+    const stadt = [];
+}
+
+const stadtLoeschen = ( loeschen ) => {
 
 }
 
-function stadtHinzuf ( einfuegen ) {
+const stadtHinzuf = ( einfuegen ) => {
+    const stadt = [{}];
+    //stadt.push
+
 
 }
 
-/*module.exports = {
-    readJSON
-};*/
+
