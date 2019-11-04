@@ -1,0 +1,52 @@
+[
+    {
+        "name": "Berlin" ,
+        "einwohnerzahl": 1350000,
+        "bundesland": "Berlin"
+    },
+    {
+        "name": "Leipzig" ,
+        "einwohnerzahl": 1200000,
+        "bundesland": "Sachsen-Anhalt"
+    },
+    {
+        "name": "Muenchen" ,
+        "einwohnerzahl": 1470000 ,
+        "bundesland": "Bayern"
+    },
+    {
+        "name": "Nuernberg" ,
+        "einwohnerzahl": 1250000,
+        "bundesland": "Bayern"
+    },
+    {
+        "name": "Stuttgard" ,
+        "einwohnerzahl": 1320000 ,
+        "bundesland": "Baden-Wuerttemberg"
+    },
+    {
+        "name": "Frankfurt" ,
+        "einwohnerzahl": 1450000,
+        "bundesland": "Hessen"
+    },
+    {
+        "name": "Koeln" ,
+        "einwohnerzahl": 1290000,
+        "bundesland": "NRW"
+    },
+    {
+        "name": "Duesseldorf" ,
+        "einwohnerzahl": 1390000,
+        "bundesland": "NRW"
+    },
+    {
+        "name": "Hannover" ,
+        "einwohnerzahl": 1410000,
+        "bundesland": "Niedersachsen"
+    },
+    {
+        "name": "Hamburg" ,
+        "einwohnerzahl": 1300000 ,
+        "bundesland": "Hamburg"
+    }
+]

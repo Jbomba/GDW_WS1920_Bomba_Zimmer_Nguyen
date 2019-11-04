@@ -1,0 +1,14 @@
+[
+    {
+        "Vorname": "Trang",
+        "Nachname": "Nguyen",
+        "email": "trang@nguyen.de",
+        "Wohnort": "Berlin"
+    },
+    {
+        "Vorname": "Dung",
+        "Nachname": "Tran",
+        "email": "dung@tran.de",
+        "Wohnort": "Leipzig"
+    }
+]
