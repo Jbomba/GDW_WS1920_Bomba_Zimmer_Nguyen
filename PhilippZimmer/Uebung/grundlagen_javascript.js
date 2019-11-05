@@ -28,13 +28,13 @@ console.log(test2);
 //User eingabe
 const readline = require('readline');
 const eingabe = readline.createInterface({input: process.stdin, output: process.stdout});
-/*eingabe.question('Ihr Bewertung:', function(antwort){
+eingabe.question('Ihr Bewertung:', function(antwort){
     var ansNumb = Number(antwort);
     //Liest antwort als string ein!
     if(antwort <= maxHöhe) {
         ++anzahl;
         bewertungRechnung( bewertung, ansNumb, anzahl);
-        eingabe.pause();
+        eingabe.close();
     }
     else if(antwort > maxHöhe) {
         console.log("Höchst Bewertung ist 100");
@@ -44,12 +44,9 @@ const eingabe = readline.createInterface({input: process.stdin, output: process.
         console.log("es sind nur Zahlen erlaubt");
         eingabe.close();
     }
-});*/
+});
 
 //Schleife
-//const readline = require('readline');
-//const eingabe = readline.createInterface({input: process.stdin, output: process.stdout});
-eingabe.resume;
 eingabe.question('Zahl der Wiederhohlungen:', function(n){
     let m = 0;
 let random = 0;
@@ -72,8 +69,6 @@ function bewertungRechnung ( gesBewert, zahl, lauf) {
 }
 
 function logBewertung (bezeichnung, lauf, zahl, gesBewert) {
-    //let log = [bezeichnung, lauf, zahl];
-    //console.log(log.length, log[2])
 
     let ratings = { name: bezeichnung, 
                     anzahl: lauf, 

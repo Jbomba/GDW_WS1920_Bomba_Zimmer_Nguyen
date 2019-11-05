@@ -9,10 +9,25 @@ const writeJSON = ( path, callback ) => {
 }
 
 const stadtFinden = ( suche, array ) => {
-
+    for(let i=0;i<array.length;i++){
+        if(suche == array[i].name){
+            stadtLoeschen ( i, array )
+            process.exit();
+        }
+        else  {
+            console.log( 'Stadt nicht gefunden' );
+            process.exit();
+        }
+    }
 }
 
-const stadtLoeschen = ( loeschen ) => {
+const stadtLoeschen = ( loeschen, array ) => {
+    array[loeschen].name = null;
+    array[loeschen].einwohner = null;
+    array[loeschen].bundesland = null;
+    for(let i=0;i<array.length;i++){
+        console.log(array[i]);
+    }
 
 }
 
