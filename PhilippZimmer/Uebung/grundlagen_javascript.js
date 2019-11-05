@@ -79,3 +79,24 @@ function logBewertung (bezeichnung, lauf, zahl, gesBewert) {
     console.log(ratings.dSchnitt());
     //Erzeugung von Instanzen und speichern in DB
 }
+
+
+//Ab2 Nr5
+const hello = "hello";
+
+function createWorld(){
+    const world = " World";
+    const zusmfuegen = hello + world;
+    return zusmfuegen
+}
+
+console.log(createWorld());
+
+
+function createDlrow(){ 
+    const world = "World " // zugriff global
+    const zusmfuegen2 = world + hello;
+    return zusmfuegen2
+}
+
+console.log(createDlrow());
