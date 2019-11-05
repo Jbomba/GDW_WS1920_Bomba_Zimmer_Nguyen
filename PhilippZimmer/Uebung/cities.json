@@ -1,52 +1,52 @@
 [
     {
-        "id":1,
+        "einwohner":3600000,
         "name":"Berlin",
-        "Bundesland":"Berlin"
+        "bundesland":"Berlin"
     },
     {
-        "id":2,
+        "einwohner":1800000,
         "name":"Hamburg",
-        "Bundesland":"Hamburg"
+        "bundesland":"Hamburg"
     },
     {
-        "id":3,
+        "einwohner":1500000,
         "name":"Muenchen",
-        "Bundesland":"Bayern"
+        "bundesland":"Bayern"
     },
     {
-        "id":4,
+        "einwohner":1100000,
         "name":"Koeln",
-        "Bundesland":"Nordrhein Westfalen"
+        "bundesland":"Nordrhein Westfalen"
     },
     {
-        "id":5,
+        "einwohner":741093,
         "name":"Frankfurt am Main",
-        "Bundesland":"Hessen"
+        "bundesland":"Hessen"
     },
     {
-        "id":6,
+        "einwohner":632743,
         "name":"Stuttgart",
-        "Bundesland":"Baden-Wuerttenberg"
+        "bundesland":"Baden-Wuerttenberg"
     },
     {
-        "id":7,
+        "einwohner":617280,
         "name":"Duesseldorf",
-        "Bundesland":"Nordrhein Westfalen"
+        "bundesland":"Nordrhein Westfalen"
     },
     {
-        "id":8,
+        "einwohner":601780,
         "name":"Dortmund",
-        "Bundesland":"Nordrhein Westfalen"
+        "bundesland":"Nordrhein Westfalen"
     },
     {
-        "id":9,
+        "einwohner":590337,
         "name":"Leipzig",
-        "Bundesland":"Sachsen"
+        "bundesland":"Sachsen"
     },
     {
-        "id":10,
+        "einwohner":590192,
         "name":"Essen",
-        "Bundesland":"Nordrhein Westfalen"
+        "bundesland":"Nordrhein Westfalen"
     }
 ]
