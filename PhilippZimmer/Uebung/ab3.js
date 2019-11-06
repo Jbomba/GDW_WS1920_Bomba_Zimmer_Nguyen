@@ -30,7 +30,8 @@ JSONReader.readJSON('./cities.json', (err,result)=> {
         }
 
         else {
-            console.log('Falsche Eingabe');
+            JSONReader.verbinden ( stadt );
+            //console.log('Falsche Eingabe');
             process.exit();
         }
         })
