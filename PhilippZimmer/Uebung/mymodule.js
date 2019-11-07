@@ -1,7 +1,17 @@
 const fs = require('fs');
+function callback(){};
 
-const readJSON = ( path, callback) => {
+
+const readJSON = ( path ) => {
+    try {
     fs.readFile(path,'utf8', callback);
+    const file = fs.readFileSync ( path );
+    const array = JSON.parse(file);
+    return array
+    } catch ( error ){
+        console.log( error );
+        process.exit();  
+    }
 }
 
 const writeJSON = ( path, callback ) => {
@@ -44,57 +54,61 @@ const stadtHinzuf = ( zahl, stadt, bundesl, array ) => {
 
 async function verbinden ( parseCitie ){
     let promise = new Promise (function (resolve, reject){
-        //console.log("vor einlesen");
-        let user = readJSON ('../user.json');
-        console.log("kl");
+        let user = readJSON ('./user.json');
         console.log(user);
         //if(users != 0){
         resolve(user);
-        console.log("einlesen rs");
         //}else {
         reject("fehler");
-        console.log("einlesen rj");
         }
     );
-    console.log("nach einlesen");
-    //let parseUser = await promise;
-    console.log("await");
+    let parseUser = await promise;
 
     let verbArray = [];
-    let verbObject = {};
-    var zahl = 0;
-    
-    for ( var i = 0; i < parseUser.length; i++){
-        console.log("test");
-        for ( var e = 0; e < user.length; e++){
-            if ( parseUser[i].wohnort == parseCitie[e].name){
-                verbObject.vorname = parseUsers[i].vorname;
-                verbObject.nachname = parseUsers[i].nachname;
-                verbObject.email = parseUsers[i].email;
-                verbObject.wohnort = parseUsers[i].wohnort;
-                verbObject.bundesland = parseCitie[e].bundesland;
-                console.log("verbindenarray");
 
-                verbArray[zahl]= verbObject;
-                zahl++;
+    for ( var i = 0; i < parseUser.length; i++){
+        for ( var e = 0; e < parseCitie.length; e++){
+            if ( parseUser[i].wohnort == parseCitie[e].name){
+                let verbObject = { 
+                    vorname : parseUser[i].vorname,
+                    nachname : parseUser[i].nachname,
+                    email : parseUser[i].email,
+                    wohnort : parseUser[i].wohnort,
+                    bundesland : parseCitie[e].bundesland,
+    };
+                
+                //verbArray[zahl]= verbObject;
+                //zahl++;
+                verbArray.push(verbObject);
+                console.log("verbindenarray in for\n");
+                for(let n=0;n<verbArray.length;n++){
+                    console.log(verbArray[n]);
+                }
             }
-            if(i == 0){
+            /*if(i == 0){
                 var test = verbObject;
                 console.log("wie oft bin ich da");
                 console.log(test);
                 console.log("i "+i);
-                console.log("k "+k);
-            }
-            if(i==1){
+                console.log("e "+e);
+            }*/
+            /*if(i==1){
                 var test2 = verbObject;
-                console.log("wie oft bin ich da");
-                console.log(test2);
-                console.log("i "+i);
-                console.log("k "+k);
-            }
+                //console.log("wie oft bin ich da");
+                //console.log(test2);
+                //console.log("i "+i);
+                console.log("e "+e);
+            }*/
+            //console.log(verbArray[0]);
         }
+    //console.log(verbArray);
     }
-    console.log(verbArray);
+    //console.log(verbArray);
+    console.log("\n");
+    console.log("verbindenarray in nach for\n");
+    for(let n=0;n<verbArray.length;n++){
+        console.log(verbArray[n]);
+    }
     process.exit();
 }
 

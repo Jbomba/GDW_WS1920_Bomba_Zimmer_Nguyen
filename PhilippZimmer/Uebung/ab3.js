@@ -1,21 +1,16 @@
-const JSONReader = require ('./myModules/mymodule.js');
+const JSONReader = require ('./mymodule.js');
 const readline = require('readline');
 const eingabe = readline.createInterface({input: process.stdin, output: process.stdout});
+const array = JSONReader.readJSON('cities.json');
 
 
-
-JSONReader.readJSON('./cities.json', (err,result)=> {
-    if (err) throw err
-    try{
-        let stadt = JSON.parse(result);
-        JSONReader.verbinden ( stadt );
-
-        /*eingabe.question( '1 = Stadt finden und loeschen, 2 = Stadt Hinzufuegen: ', function (antwort){
+    JSONReader.verbinden ( array );
+        eingabe.question( '1 = Stadt finden und loeschen, 2 = Stadt Hinzufuegen: ', function (antwort){
 
         if (antwort == 1){
             eingabe.question( 'Welche Stadt wollen Sie loeschen: ', function( antwhinz){
                 eingabe.close();
-                JSONReader.stadtFinden ( antwhinz, stadt );
+                JSONReader.stadtFinden ( antwhinz);
             })
         }
 
@@ -25,7 +20,7 @@ JSONReader.readJSON('./cities.json', (err,result)=> {
                 eingabe.question( 'Bundesland: ', function( antwBundesland){
                     eingabe.question( 'Einwohnerzahl: ', function( antwEinw){
                         eingabe.close();
-                        JSONReader.stadtHinzuf ( antwEinw, antwName, antwBundesland, stadt);
+                        JSONReader.stadtHinzuf ( antwEinw, antwName, antwBundesland);
                     })
                 })
             }) 
@@ -36,12 +31,6 @@ JSONReader.readJSON('./cities.json', (err,result)=> {
             process.exit();
         }
         })
-    } catch (error) {
-        console.log(error);
-        process.exit();
-    }*/
     
-    }
-}
-)
+
 
