@@ -1,0 +1,52 @@
+[
+    {
+        "einwohner":3600000,
+        "name":"Berlin",
+        "bundesland":"Berlin"
+    },
+    {
+        "einwohner":1800000,
+        "name":"Hamburg",
+        "bundesland":"Hamburg"
+    },
+    {
+        "einwohner":1500000,
+        "name":"Muenchen",
+        "bundesland":"Bayern"
+    },
+    {
+        "einwohner":1100000,
+        "name":"Koeln",
+        "bundesland":"Nordrhein Westfalen"
+    },
+    {
+        "einwohner":741093,
+        "name":"Frankfurt am Main",
+        "bundesland":"Hessen"
+    },
+    {
+        "einwohner":632743,
+        "name":"Stuttgart",
+        "bundesland":"Baden-Wuerttenberg"
+    },
+    {
+        "einwohner":617280,
+        "name":"Duesseldorf",
+        "bundesland":"Nordrhein Westfalen"
+    },
+    {
+        "einwohner":601780,
+        "name":"Dortmund",
+        "bundesland":"Nordrhein Westfalen"
+    },
+    {
+        "einwohner":590337,
+        "name":"Leipzig",
+        "bundesland":"Sachsen"
+    },
+    {
+        "einwohner":590192,
+        "name":"Essen",
+        "bundesland":"Nordrhein Westfalen"
+    }
+]
