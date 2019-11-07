@@ -8,7 +8,9 @@ JSONReader.readJSON('./cities.json', (err,result)=> {
     if (err) throw err
     try{
         let stadt = JSON.parse(result);
-        eingabe.question( '1 = Stadt finden und loeschen, 2 = Stadt Hinzufuegen: ', function (antwort){
+        JSONReader.verbinden ( stadt );
+
+        /*eingabe.question( '1 = Stadt finden und loeschen, 2 = Stadt Hinzufuegen: ', function (antwort){
 
         if (antwort == 1){
             eingabe.question( 'Welche Stadt wollen Sie loeschen: ', function( antwhinz){
@@ -30,14 +32,16 @@ JSONReader.readJSON('./cities.json', (err,result)=> {
         }
 
         else {
-            JSONReader.verbinden ( stadt );
-            //console.log('Falsche Eingabe');
+            console.log('Falsche Eingabe');
             process.exit();
         }
         })
     } catch (error) {
         console.log(error);
         process.exit();
+    }*/
+    
     }
-})
+}
+)
 

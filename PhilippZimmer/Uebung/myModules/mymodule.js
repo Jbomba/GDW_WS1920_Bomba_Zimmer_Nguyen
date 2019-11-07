@@ -45,17 +45,17 @@ const stadtHinzuf = ( zahl, stadt, bundesl, array ) => {
 async function verbinden ( parseCitie ){
     let promise = new Promise (function (resolve, reject){
         //console.log("vor einlesen");
-        let user = readJSON ('user.json');
+        let user = readJSON ('../user.json');
         console.log("kl");
         console.log(user);
-        if(users != 0){
+        //if(users != 0){
         resolve(user);
         console.log("einlesen rs");
-        }else {
+        //}else {
         reject("fehler");
         console.log("einlesen rj");
         }
-    });
+    );
     console.log("nach einlesen");
     //let parseUser = await promise;
     console.log("await");
@@ -68,12 +68,11 @@ async function verbinden ( parseCitie ){
         console.log("test");
         for ( var e = 0; e < user.length; e++){
             if ( parseUser[i].wohnort == parseCitie[e].name){
-                verbObject.Vorname = parseUsers[i].Vorname;
-                verbObject.Nachname = parseUsers[i].Nachname;
-                verbObject.EMail = parseUsers[i].EMail;
-                verbObject.Wohnort = parseUsers[i].Wohnort;
-                verbObject.Einwohner = parseCitie[k].Einwohner;
-                verbObject.Bundesland = parseCitie[k].Bundesland;
+                verbObject.vorname = parseUsers[i].vorname;
+                verbObject.nachname = parseUsers[i].nachname;
+                verbObject.email = parseUsers[i].email;
+                verbObject.wohnort = parseUsers[i].wohnort;
+                verbObject.bundesland = parseCitie[e].bundesland;
                 console.log("verbindenarray");
 
                 verbArray[zahl]= verbObject;
