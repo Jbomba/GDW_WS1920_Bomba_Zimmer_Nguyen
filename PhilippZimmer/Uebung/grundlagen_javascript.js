@@ -1,18 +1,15 @@
+//ausgabe
 const name = "Philipp Zimmer";
-
-/*
-* Nimmt die Variable message entgegen
-* und gibt diese auf der Konsole aus
-*/
 console.log(name);
+
 
 // App Bewertung
 const maxHöhe = 100;
 var anzahl = 5;
 var bewertung = 50;
 var ergebnis = 0;
-
 console.log(maxHöhe, anzahl, bewertung);
+
 
 //Bewertung
 ++anzahl;
@@ -28,6 +25,7 @@ console.log(test2);
 //User eingabe
 const readline = require('readline');
 const eingabe = readline.createInterface({input: process.stdin, output: process.stdout});
+
 eingabe.question('Ihr Bewertung:', function(antwort){
     var ansNumb = Number(antwort);
     //Liest antwort als string ein!
@@ -46,9 +44,10 @@ eingabe.question('Ihr Bewertung:', function(antwort){
     }
 });
 
-//Schleife
-eingabe.question('Zahl der Wiederhohlungen:', function(n){
-    let m = 0;
+
+//Schleife random Userbewertung
+let m = 0;
+let n = 5;
 let random = 0;
 while ( n != m) {
     m++;
@@ -56,9 +55,10 @@ while ( n != m) {
     random = Math.floor(Math.random() * 100);
     bewertungRechnung(bewertung, random, anzahl);
     logBewertung(name, anzahl, random, bewertung);
+    eingabe.close();
 }
-eingabe.close();
-});
+
+
 
 function bewertungRechnung ( gesBewert, zahl, lauf) {
     let tast = 0;
@@ -68,6 +68,8 @@ function bewertungRechnung ( gesBewert, zahl, lauf) {
     console.log(`Neu Gesamt Bewertung ist ${tast}`);
 }
 
+
+//AB 2
 function logBewertung (bezeichnung, lauf, zahl, gesBewert) {
 
     let ratings = { name: bezeichnung, 
@@ -81,7 +83,7 @@ function logBewertung (bezeichnung, lauf, zahl, gesBewert) {
 }
 
 
-//Ab2 Nr5
+
 const hello = "hello";
 
 function createWorld(){
@@ -89,7 +91,6 @@ function createWorld(){
     const zusmfuegen = hello + world;
     return zusmfuegen
 }
-
 console.log(createWorld());
 
 
@@ -98,5 +99,4 @@ function createDlrow(){
     const zusmfuegen2 = world + hello;
     return zusmfuegen2
 }
-
 console.log(createDlrow());

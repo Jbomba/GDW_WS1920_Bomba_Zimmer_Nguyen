@@ -14,9 +14,13 @@ const readJSON = ( path ) => {
     }
 }
 
+
+
 const writeJSON = ( path, callback ) => {
     fs.writeFile ( path, 'utf8', callback);
 }
+
+
 
 const stadtFinden = ( suche, array ) => {
     for(let i=0;i<array.length;i++){
@@ -31,6 +35,8 @@ const stadtFinden = ( suche, array ) => {
     }
 }
 
+
+
 const stadtLoeschen = ( loeschen, array ) => {
     array[loeschen].name = null;
     array[loeschen].einwohner = null;
@@ -40,6 +46,8 @@ const stadtLoeschen = ( loeschen, array ) => {
     }
 
 }
+
+
 
 const stadtHinzuf = ( zahl, stadt, bundesl, array ) => {
     let neuStadt = { einwohner : zahl,
@@ -52,6 +60,8 @@ const stadtHinzuf = ( zahl, stadt, bundesl, array ) => {
     }
 }
 
+
+
 async function verbinden ( parseCitie ){
     let promise = new Promise (function (resolve, reject){
         let user = readJSON ('./user.json');
@@ -62,8 +72,8 @@ async function verbinden ( parseCitie ){
         reject("fehler");
         }
     );
-    let parseUser = await promise;
 
+    let parseUser = await promise;
     let verbArray = [];
 
     for ( var i = 0; i < parseUser.length; i++){
@@ -75,42 +85,19 @@ async function verbinden ( parseCitie ){
                     email : parseUser[i].email,
                     wohnort : parseUser[i].wohnort,
                     bundesland : parseCitie[e].bundesland,
-    };
-                
-                //verbArray[zahl]= verbObject;
-                //zahl++;
+                };
                 verbArray.push(verbObject);
-                console.log("verbindenarray in for\n");
-                for(let n=0;n<verbArray.length;n++){
-                    console.log(verbArray[n]);
-                }
             }
-            /*if(i == 0){
-                var test = verbObject;
-                console.log("wie oft bin ich da");
-                console.log(test);
-                console.log("i "+i);
-                console.log("e "+e);
-            }*/
-            /*if(i==1){
-                var test2 = verbObject;
-                //console.log("wie oft bin ich da");
-                //console.log(test2);
-                //console.log("i "+i);
-                console.log("e "+e);
-            }*/
-            //console.log(verbArray[0]);
         }
-    //console.log(verbArray);
     }
-    //console.log(verbArray);
-    console.log("\n");
-    console.log("verbindenarray in nach for\n");
+
     for(let n=0;n<verbArray.length;n++){
         console.log(verbArray[n]);
     }
     process.exit();
 }
+
+
 
 module.exports = {
     readJSON, writeJSON, stadtHinzuf, stadtFinden, verbinden
