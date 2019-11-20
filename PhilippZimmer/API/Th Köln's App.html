@@ -1,0 +1,47 @@
+<!--
+
+App name
+    Th Köln's App
+App ID
+    dcdfab73
+Key
+    f7cdadd161bb7a81c9fd7dbcba62418f
+
+-->
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Test</title>
+        <meta name="Test" content="Test" />
+<!--
+        <link href="style.css" type="text/css" rel="stylesheet" />
+-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    </head>
+
+    <body>
+
+
+<script>
+
+    $.ajax({
+        url: "https://api.weatherunlocked.com/api/current/40.71,-74.00?app_id=dcdfab73&app_key=f7cdadd161bb7a81c9fd7dbcba62418f}",
+        type: "GET",
+        success: function (parsedResponse, statusText, jqXhr) {
+
+            console.log(parsedResponse);
+
+        },
+        error: function (error) {
+
+            console.log(error);
+        }
+    });
+
+</script>
+    </body>
+</html>
