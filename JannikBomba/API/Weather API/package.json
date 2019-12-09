@@ -1,0 +1,19 @@
+{
+  "name": "weather-api",
+  "version": "1.0.0",
+  "description": "Test Wetter API Darksky",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Jannik Bomba",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.1",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {}
+}
