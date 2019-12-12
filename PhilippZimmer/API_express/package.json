@@ -1,0 +1,23 @@
+{
+  "name": "weatherunlocked",
+  "version": "1.0.0",
+  "description": "wetterapi",
+  "main": "weatherunlocked.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jbomba/GDW_WS1920_Bomba_Zimmer_Nguyen.git"
+  },
+  "author": "Philipp Zimmer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jbomba/GDW_WS1920_Bomba_Zimmer_Nguyen/issues"
+  },
+  "homepage": "https://github.com/Jbomba/GDW_WS1920_Bomba_Zimmer_Nguyen#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "request": "^2.88.0"
+  }
+}
