@@ -1,0 +1,14 @@
+{
+  "name": "api_ajax",
+  "version": "1.0.0",
+  "description": "",
+  "main": "weatherunlocked.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Philipp Zimmer",
+  "license": "ISC",
+  "dependencies": {
+    "ajax": "0.0.4"
+  }
+}
