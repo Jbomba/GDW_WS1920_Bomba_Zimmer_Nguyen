@@ -1,9 +1,7 @@
-const test = "Test";
-console.log(test);
-
 const fs = require('fs');
 var content;
 
+const test = ["Test1", "Test2", "Test3"]
 
 
 fs.readFile('./DummyDaten/Arbeitsplan', function read(err,data) {
@@ -12,12 +10,13 @@ fs.readFile('./DummyDaten/Arbeitsplan', function read(err,data) {
     }
     content = data;
     const obj = JSON.parse(content);
+    const shareInfoLen = Object.keys(obj.shareInfo[i]).length;
 console.log(obj);
 console.log();
 
 const arrayTag1 = obj[0];
 console.log(arrayTag1);
-console.log();
+console.log(shareInfoLen);
 
 const nichtanwesendTag1 = arrayTag1[0];
 console.log(nichtanwesendTag1);
