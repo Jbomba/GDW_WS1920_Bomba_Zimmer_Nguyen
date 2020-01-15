@@ -1,27 +1,26 @@
-  [(tag)
-    [(tag1)
-      [(nichtanwesend)
+  [
+    [
+      [
         {"name" : "niko nichtanwesend"},
         {"name" : "nina nichtanwesend"}
         ],
-      [(deadline)
+      [
         {"name" : "darius deadline"}
         ]
       ],
-    [(tag2)
-      [(nichtanwesend)
-        {"name" : "niko nichtanwesend"},
-        {"e" : "e"}
+    [
+      [
+        {"name" : "niko nichtanwesend"}
         ],
-      [(deadline)
+      [
         {"name" : "doris deadline" }
         ]
     ],
-    [(tag3)
+    [
       ],
-    [(tag4)
+    [
       ],
-    [(tag5)
+    [
       ]
   ]
 
