@@ -1,26 +1,75 @@
   [
     [
       [
-        {"name" : "niko nichtanwesend"},
-        {"name" : "nina nichtanwesend"}
-        ],
-      [
-        {"name" : "darius deadline"}
-        ]
+        {
+          "id" : 7,
+          "name" : "Sigrid Radke"
+        },
+        {
+          "id"   : 11,
+          "name" : "Jürgen Ottenbacher"
+        }
       ],
-    [
       [
-        {"name" : "niko nichtanwesend"}
-        ],
-      [
-        {"name" : "doris deadline" }
-        ]
+        {
+          "id" : 3,
+          "name" : "Nico Zielony"
+      }
+      ]
     ],
     [
+      [
+        {
+          "id" : 7,
+          "name" : "Sigrid Radke"
+        },
+        {
+          "id"   : 11,
+          "name" : "Jürgen Ottenbacher"
+        }
       ],
+      [
+        {
+          "id" : 16,
+          "name" : "Cedric Klebe"
+      }
+      ]
+    ],
     [
+      [
+        {
+          "id"   : 11,
+          "name" : "Jürgen Ottenbacher"
+        },
+        {
+          "id" : 7,
+          "name" : "Sigrid Radke"
+        }
       ],
+      [
+        {
+          "id": 20,
+          "name" : "Corinna Rust"
+      }
+      ]
+    ],
     [
+      [
+        {
+          "id"   : 11,
+          "name" : "Jürgen Ottenbacher"
+        },
+        {
+          "id" : 7,
+          "name" : "Sigrid Radke"
+        }
+      ],
+      [
+        {
+          "id" : 17,
+          "name" : "Monique Jäschke"
+      }
+      ]
       ]
   ]
 

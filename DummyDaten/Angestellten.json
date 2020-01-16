@@ -1,82 +1,102 @@
 [
     {
         "id" : 1,
-        "name" : "Annalena Dietz"
+        "name" : "Annalena Dietz",
+        "hund" : true
     },
     {
         "id" : 2,
-        "name" : "Sophie Antoni"
+        "name" : "Sophie Antoni",
+        "hund" : false
     },
     {
         "id" : 3,
-        "name" : "Nico Zielony"
+        "name" : "Nico Zielony",
+        "hund" : true
     },
     {
         "id" : 4,
-        "name" : "Silvia Naumann"
+        "name" : "Silvia Naumann",
+        "hund" : false
     },
     {
         "id" : 5,
-        "name" : "Nick Wiedenmann"
+        "name" : "Nick Wiedenmann",
+        "hund" : false
     },
     {
         "id" : 6,
-        "name" : "Mandy Decker"
+        "name" : "Mandy Decker",
+        "hund" : false
     },
     {
         "id" : 7,
-        "name" : "Sigrid Radke"
+        "name" : "Sigrid Radke",
+        "hund" : false
     },
     {
         "id" : 8,
-        "name" : "Margot Humpert"
+        "name" : "Margot Humpert",
+        "hund" : false
     },
     {
         "id" : 9,
-        "name" : "Annette Sippel"
+        "name" : "Annette Sippel",
+        "hund" : false
     },
     {
         "id" : 10,
-        "name" : "Thore Flemming"
+        "name" : "Thore Flemming",
+        "hund" : false
     },
     {
         "id" : 11,
-        "name" : "Jürgen Ottenbacher"
+        "name" : "Jürgen Ottenbacher",
+        "hund" : true
     },
     {
         "id" : 12,
-        "name" : "Mareike Rehbinder"
+        "name" : "Mareike Rehbinder",
+        "hund" : false
     },
     {
         "id" : 13,
-        "name" : "Saskia Hähnel"
+        "name" : "Saskia Hähnel",
+        "hund" : true
     },
     {
         "id" : 14,
-        "name" : "Silke Bäumer"
+        "name" : "Silke Bäumer",
+        "hund" : false
     },
     {
         "id" : 15,
-        "name" : "Margret Hackbarth"
+        "name" : "Margret Hackbarth",
+        "hund" : false
     },
     {
         "id" : 16,
-        "name" : "Cedric Klebe"
+        "name" : "Cedric Klebe",
+        "hund" : true
     },
     {
         "id" : 17,
-        "name" : "Monique Jäschke"
+        "name" : "Monique Jäschke",
+        "hund" : true
     },
     {
         "id" : 18,
-        "name" : "Xaver Heinrichsdobler"
+        "name" : "Xaver Heinrichsdobler",
+        "hund" : false
     },
     {
         "id" : 19,
-        "name" : "Wolfram Brandstetter"
+        "name" : "Wolfram Brandstetter",
+        "hund" : true
     },
     {
         "id": 20,
-        "name" : "Corinna Rust"
+        "name" : "Corinna Rust",
+        "hund" : true
     }
 ]

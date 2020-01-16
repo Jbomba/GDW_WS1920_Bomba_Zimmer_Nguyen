@@ -1,28 +1,43 @@
 const fs = require('fs');
-var data;
 
 
 
 
-fs.readFile('./DummyDaten/Arbeitsplan.json', function read(err,data) {
+fs.readFile('./DummyDaten/Arbeitsplan.json', function read(err,dataAP) {
     if (err) {
         throw err;
     }
-    const obj = JSON.parse(data);
-    //const shareInfoLen = Object.keys(obj.shareInfo[i]).length;
-    const array = Object.keys(obj);
-    const arrayTag1 = obj[0];
+        fs.readFile('./DummyDaten/Angestellten.json', function read(err,dataAS) {
+    if (err) {
+        throw err;
+    }
+
+
+    //parse
+    const objAP = JSON.parse(dataAP);
+    const objAS = JSON.parse(dataAS);
+
+
+    //Test Detail arrays
+    const arrayTag1 = objAP[0];
     const Tag1nichtanwesend = arrayTag1[0];
-    //const arrayTag2
-    const arrayLength = Object.keys(array);
-    const arrayLengthTag1 = Object.keys(arrayTag1);
-    const arrayLengthTag1Nichtanwesend = Object.keys(arrayLengthTag1);
 
 
-    console.log(arrayLength.length);
-    console.log(arrayTag1.length);
-    console.log(arrayLengthTag1Nichtanwesend.length);
-    console.log(arrayLengthTag1Nichtanwesend[0]);
+    //Test ausgabe inhalt array
+    console.log(arrayTag1);
+    console.log(Tag1nichtanwesend);
+    console.log(Tag1nichtanwesend[0]);
+    console.log();
 
-    arrayLength.forEach
-})
+
+    //sysdate
+    var abfrage = new Date();
+    var date = abfrage.getDate() + '/'
+                + (abfrage.getMonth() +1) + '/'
+                + abfrage.getFullYear() + '@'
+                + abfrage.getHours() + ':'
+                + abfrage.getMinutes() + ':'
+                + abfrage.getSeconds();
+    console.log(date);
+
+})})
