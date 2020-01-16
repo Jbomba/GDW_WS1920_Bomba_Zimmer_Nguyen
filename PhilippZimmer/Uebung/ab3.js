@@ -24,7 +24,7 @@ JSONReader.verbinden ( array );
                     JSONReader.stadtHinzuf ( antwEinw, antwName, antwBundesland);
                 })
             })
-        }) 
+        })
     }
 
     else {
@@ -32,6 +32,3 @@ JSONReader.verbinden ( array );
         process.exit();
     }
     })
-    
-
-

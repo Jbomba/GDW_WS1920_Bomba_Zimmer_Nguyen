@@ -1,36 +1,28 @@
 const fs = require('fs');
-var content;
-
-const test = ["Test1", "Test2", "Test3"]
+var data;
 
 
-fs.readFile('./DummyDaten/Arbeitsplan', function read(err,data) {
+
+
+fs.readFile('./DummyDaten/Arbeitsplan.json', function read(err,data) {
     if (err) {
         throw err;
     }
-    content = data;
-    const obj = JSON.parse(content);
-    const shareInfoLen = Object.keys(obj.shareInfo[i]).length;
-console.log(obj);
-console.log();
+    const obj = JSON.parse(data);
+    //const shareInfoLen = Object.keys(obj.shareInfo[i]).length;
+    const array = Object.keys(obj);
+    const arrayTag1 = obj[0];
+    const Tag1nichtanwesend = arrayTag1[0];
+    //const arrayTag2
+    const arrayLength = Object.keys(array);
+    const arrayLengthTag1 = Object.keys(arrayTag1);
+    const arrayLengthTag1Nichtanwesend = Object.keys(arrayLengthTag1);
 
-const arrayTag1 = obj[0];
-console.log(arrayTag1);
-console.log(shareInfoLen);
 
-const nichtanwesendTag1 = arrayTag1[0];
-console.log(nichtanwesendTag1);
-console.log();
+    console.log(arrayLength.length);
+    console.log(arrayTag1.length);
+    console.log(arrayLengthTag1Nichtanwesend.length);
+    console.log(arrayLengthTag1Nichtanwesend[0]);
 
-const person1NichtanwesendTag1 = nichtanwesendTag1[0];
-console.log(person1NichtanwesendTag1.name);
-
+    arrayLength.forEach
 })
-
-
-
-
-
-
-
-
