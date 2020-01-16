@@ -40,4 +40,7 @@ fs.readFile('./DummyDaten/Arbeitsplan.json', function read(err,dataAP) {
                 + abfrage.getSeconds();
     console.log(date);
 
+
+
+
 })})
