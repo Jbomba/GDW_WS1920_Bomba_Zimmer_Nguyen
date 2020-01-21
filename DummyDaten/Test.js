@@ -18,16 +18,22 @@ fs.readFile('./DummyDaten/Arbeitsplan.json', function read(err,dataAP) {
     const objAS = JSON.parse(dataAS);
 
 
+
     //Test Detail arrays
-    const arrayTag1 = objAP[0];
-    const Tag1nichtanwesend = arrayTag1[0];
+    const arrayTag1 = objAP[1];
+    const Tag1nichtanwesend = arrayTag1[1];
 
 
     //Test ausgabe inhalt array
     console.log(arrayTag1);
     console.log(Tag1nichtanwesend);
-    console.log(Tag1nichtanwesend[0]);
+    console.log(Tag1nichtanwesend[1]);
     console.log();
+
+    console.log("get bis Test");
+    arrayTag1.forEach(element => {
+        console.log(element)
+    });
 
 
     //sysdate

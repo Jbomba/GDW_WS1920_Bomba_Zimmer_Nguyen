@@ -1,77 +1,121 @@
+[
+  {
+    "wochenid" : 0,
+    "monat" : 1
+  },
   [
+    {
+      "tagid" : 0,
+      "Tag" : 21
+    },
     [
-      [
-        {
-          "id" : 7,
-          "name" : "Sigrid Radke"
-        },
-        {
-          "id"   : 11,
-          "name" : "Jürgen Ottenbacher"
-        }
-      ],
-      [
-        {
-          "id" : 3,
-          "name" : "Nico Zielony"
-      }
-      ]
+      {
+        "anwesenid" : 0
+      },
+      {
+         "id" : 7,
+        "name" : "Sigrid Radke"
+      },
+      {
+        "id"   : 11,
+        "name" : "Jürgen Ottenbacher"
+       }
     ],
     [
-      [
-        {
-          "id" : 7,
-          "name" : "Sigrid Radke"
-        },
-        {
-          "id"   : 11,
-          "name" : "Jürgen Ottenbacher"
-        }
-      ],
-      [
-        {
-          "id" : 16,
-          "name" : "Cedric Klebe"
-      }
-      ]
+      {
+        "deadlineid" : 0
+      },
+      {
+         "id" : 3,
+        "name" : "Nico Zielony"
+     }
+     ]
+  ],
+  [
+    {
+      "wochenid" : 0,
+      "Tag" : 22
+    },
+    [
+      {
+        "anwesenid" : 0
+      },
+      {
+        "id" : 7,
+        "name" : "Sigrid Radke"
+       },
+      {
+         "id"   : 11,
+         "name" : "Jürgen Ottenbacher"
+       }
     ],
     [
-      [
-        {
-          "id"   : 11,
-          "name" : "Jürgen Ottenbacher"
-        },
-        {
-          "id" : 7,
-          "name" : "Sigrid Radke"
-        }
-      ],
-      [
-        {
-          "id": 20,
-          "name" : "Corinna Rust"
-      }
-      ]
+      {
+        "deadlineid" : 0
+      },
+       {
+        "id" : 16,
+         "name" : "Cedric Klebe"
+    }
+     ]
+   ],
+   [
+    {
+      "tagid" : 0,
+      "Tag" : 23
+    },
+    [
+      {
+        "anwesenid" : 0
+      },
+      {
+         "id"   : 11,
+         "name" : "Jürgen Ottenbacher"
+       },
+       {
+         "id" : 7,
+         "name" : "Sigrid Radke"
+       }
     ],
     [
-      [
-        {
-          "id"   : 11,
-          "name" : "Jürgen Ottenbacher"
-        },
-        {
+      {
+        "deadlineid" : 0
+      },
+      {
+       "id": 20,
+       "name" : "Corinna Rust"
+      }
+    ]
+  ],
+  [
+    {
+      "tagid" : 0,
+      "Tag" : 24
+    },
+    [
+      {
+        "anwesenid" : 0
+      },
+       {
+        "id"   : 11,
+         "name" : "Jürgen Ottenbacher"
+      },
+      {
           "id" : 7,
           "name" : "Sigrid Radke"
-        }
-      ],
-      [
-        {
-          "id" : 17,
-          "name" : "Monique Jäschke"
       }
-      ]
-      ]
+    ],
+    [
+      {
+        "deadlineid" : 0
+      },
+      {
+        "id" : 17,
+        "name" : "Monique Jäschke"
+      }
+    ]
   ]
+]
 
 
 
