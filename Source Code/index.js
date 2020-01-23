@@ -4,6 +4,8 @@ const logger = require("./middleware/logger");
 const request = require("request");
 const fs = require("fs");
 const app = express();
+const JSONReader = require ('./ourmodule');
+
 
 //var weatherid1 = 0;
 //var weatherid2 = 0;
@@ -17,12 +19,8 @@ var wetterlage = ["8", "3", "6", "5", "2", "7"];
 app.use(logger);
 
 function mitarbeiterwahl() {
-  fs.readFile("./angestellte.json", function (err, dataAS) {
-    if (err) {
-      throw err;
-    }
+  const arrayAS = JSONReader.readJSON('angestellte.json');
 
-    const arrayAS = JSON.parse(dataAS);
     //testtemp = arrayAS[0].name;
 
     var sortedArray = [];
@@ -61,10 +59,12 @@ function mitarbeiterwahl() {
     // Array wird wieder zum String
     dataAS = JSON.stringify(sortedArray);
 
-    fs.writeFileSync("./angestellte.json", dataAS);
+
+    JSONReader.writeJSON('angestellte.json', dataAS);
+    //fs.writeFileSync("./angestellte.json", dataAS);
     return spaziergaenger.name;
-  });
-}
+  };
+
 
 // Postman http://192.168.43.25:3000/ fuer Hotspot 2 Device Test oder http://localhost:3000/ fuer Locales Testen.
 
