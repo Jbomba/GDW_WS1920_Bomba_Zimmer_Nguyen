@@ -43,9 +43,9 @@ app.get("/", (req, res) => {
     console.log(weatherid1);
 */
 
-    var timestamp1 = ourmodule.wetterNummer(weather_json, position1);
-    var timestamp2 = ourmodule.wetterNummer(weather_json, position2);
-    var timestamp3 = ourmodule.wetterNummer(weather_json, position3);
+    var weatherid1 = ourmodule.wetterNummer(weather_json, position1);
+    var weatherid2 = ourmodule.wetterNummer(weather_json, position2);
+    var weatherid3 = ourmodule.wetterNummer(weather_json, position3);
     console.log(timestamp3);
 
     /*
@@ -70,7 +70,7 @@ app.get("/", (req, res) => {
     console.log(weatherid3);
     */
 
-    anwendungslogik(timestamp1, timestamp2, timestamp3);
+    anwendungslogik();
     mitarbeiterwahl();
 
     var tempArray = [
@@ -95,7 +95,7 @@ app.get("/", (req, res) => {
   });
 });
 
-function anwendungslogik(timestamp1, timestamp2, timestamp3) {
+function anwendungslogik() {
   console.log(timestamp3);
   var wetterlage = ["8", "3", "6", "5", "2", "7"];
   temp  = 0;
