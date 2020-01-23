@@ -2,8 +2,7 @@ const express = require("express");
 const logger = require("./middleware/logger");
 const request = require("request");
 const app = express();
-const ourmodule = require ('./ourmodule');
-
+const ourmodule = require("./ourmodule");
 
 // Start des Loggers.
 app.use(logger);
@@ -35,12 +34,19 @@ app.get("/", (req, res) => {
     var timestamp1 = ourmodule.zeitpunkt(weather_json, position1);
     var timestamp2 = ourmodule.zeitpunkt(weather_json, position2);
     var timestamp3 = ourmodule.zeitpunkt(weather_json, position3);
-  
+
     var weatherid1 = ourmodule.wetterNummer(weather_json, position1);
     var weatherid2 = ourmodule.wetterNummer(weather_json, position2);
     var weatherid3 = ourmodule.wetterNummer(weather_json, position3);
 
-    anwendungslogik(timestamp3, timestamp2, timestamp1, weatherid1, weatherid2, weatherid3);
+    anwendungslogik(
+      timestamp3,
+      timestamp2,
+      timestamp1,
+      weatherid1,
+      weatherid2,
+      weatherid3
+    );
 
     var tempArray = [
       "Error Fehlerhafte Wetterrueckmeldung!",
@@ -61,37 +67,53 @@ app.get("/", (req, res) => {
       "Die beste Uhrzeit zum Spazierengehen ist: " +
       tempTime +
       " +/- 1,5 Stunden. " +
-      tempArray[temp] + " Herrchen/Frauchen ist fuer heute: " + mitarbeiter;
+      tempArray[temp] +
+      " Herrchen/Frauchen ist fuer heute: " +
+      mitarbeiter;
 
     res.send(antwort);
   });
 });
 
-function anwendungslogik(timestamp3, timestamp2, timestamp1, weatherid1, weatherid2, weatherid3) {
-  ourmodule.ifBinUeberfordert(timestamp3, timestamp2, timestamp1, weatherid1, weatherid2, weatherid3);  
+function anwendungslogik(
+  timestamp3,
+  timestamp2,
+  timestamp1,
+  weatherid1,
+  weatherid2,
+  weatherid3
+) {
+  ourmodule.desicionalgo(
+    timestamp3,
+    timestamp2,
+    timestamp1,
+    weatherid1,
+    weatherid2,
+    weatherid3
+  );
 }
 
-  function mitarbeiterwahl() {
-    var angestellten_json = ourmodule.readJSON('angestellte.json');
-    var sortedArray = ourmodule.sortZeit(angestellten_json);
-    //var sortedArray = ourmodule.sortPrio(sortedArray);
-    console.log(sortedArray);
-       //sortedArray[0] wird als Spaziergaenger gewaehlt.
-      var spaziergaenger = sortedArray[0];
-       //Array[0] wird entfernt.
-      sortedArray.shift();
+function mitarbeiterwahl() {
+  var angestellten_json = ourmodule.readJSON("angestellte.json");
+  var sortedArray = ourmodule.sortZeit(angestellten_json);
+  //var sortedArray = ourmodule.sortPrio(sortedArray);
+  console.log(sortedArray);
+  //sortedArray[0] wird als Spaziergaenger gewaehlt.
+  var spaziergaenger = sortedArray[0];
+  //Array[0] wird entfernt.
+  sortedArray.shift();
 
-    var reduzierenArray = ourmodule.prioReduziert(sortedArray);
+  var reduzierenArray = ourmodule.prioReduziert(sortedArray);
 
-      // Setzt die Prio des Spaziergaengers zurueck.
-      spaziergaenger.prio = 10;
-      // Fuegt ihn ans ende der Liste an.
-      //console.log(reduzierenArray);
-      reduzierenArray.push(spaziergaenger);
-      //console.log(reduzierenArray);
-      // Array wird wieder zum String
-      dataAngestellte = JSON.stringify(angestellten_json);
+  // Setzt die Prio des Spaziergaengers zurueck.
+  spaziergaenger.prio = 10;
+  // Fuegt ihn ans ende der Liste an.
+  //console.log(reduzierenArray);
+  reduzierenArray.push(spaziergaenger);
+  //console.log(reduzierenArray);
+  // Array wird wieder zum String
+  dataAngestellte = JSON.stringify(angestellten_json);
 
-      ourmodule.writeJSON('angestellte.json', dataAngestellte);
-    return spaziergaenger.name;
-  };
+  ourmodule.writeJSON("angestellte.json", dataAngestellte);
+  return spaziergaenger.name;
+}
