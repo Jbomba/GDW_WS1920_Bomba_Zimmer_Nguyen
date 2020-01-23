@@ -1,40 +1,37 @@
-const express = require("express");
-const path = require("path");
-const logger = require("./middleware/logger");
-const request = require("request");
 const fs = require('fs');
 function callback(){};
-const app = express();
 
+/*
 const readJSON = ( path ) => {
     try {
     fs.readFile(path,'utf8', callback);
-    const file = fs.readFileSync ( path );
+    const file = fs.readFileSync (path);
     const array = JSON.parse(file);
     return array
-    } catch ( error ){
-        console.log( error );
+    } catch (error){
+        console.log(error);
         process.exit();
     }
 }
 
-const writeJSON = ( path, file ) => {
-    fs.writeFile ( path, file, callback);
+const writeJSON = (path, file) => {
+    fs.writeFile (path, file, callback);
 }
 
 // Filtern des Arrays Deadline True/False, True wird entfernt.
-const sortZeit = ( array ) => {
-var sortedArray = [];
+const sortZeit = (array) => {
+//var sortedArray = [];
 array.forEach(element => {
     if (element.deadline == false) {
-      sortedArray.push(element);
+      array.push(element);
     }
   });
-return sortedArray;
+return array;
 }
 
 // Sort nach Prioritaet. 1 am Anfang des Arrays, 10 am Ende.
-const sortPrio = ( array ) => {
+const sortPrio = (array) => {
+  //var tempArray = [];
 array.sort(function (a, b) {
     array.push(a.prio - b.prio);
   });
@@ -42,7 +39,7 @@ array.sort(function (a, b) {
 }
 
 // Prio anderer Angestellten wird erhoeht.
-const priReduziert = ( array ) => {
+const prioReduziert = (array) => {
     array.forEach(angestellte => {
     if (angestellte.prio >= 2) {
       angestellte.prio--;
@@ -50,11 +47,12 @@ const priReduziert = ( array ) => {
   });
   return array;
 }
+*/
 
-//Zeitpunkte herraussuchen
+// Zeitpunkte herraussuchen
 const zeitpunkt = (array, position) => {
 timestamp = array.list[position].dt_txt;
-//timestamp String Short
+// timestamp String Short
 timestamp = timestamp.substr(11);
 return timestamp
 }
@@ -62,7 +60,7 @@ return timestamp
 
 const wetterNummer = (zeitpunkt, position) => {
 weatherid = zeitpunkt.list[position].weather[0].id;
-//Weather ID toString
+// Weather ID toString
 weatherid = ("" + weatherid)[0];
 console.log(weatherid);
 return weatherid;
@@ -90,7 +88,7 @@ const ifBinUeberfordert = (timestamp3, timestamp2, timestamp1, weatherid1, weath
         if (timestamp3 === element) {
           weatherid2 = weatherid1;
           timestamp2 = timestamp1;
-        } else { //Wetter abfrage nach Clear/Cloud
+        } else { 
           wetterlage.forEach(element => {
             if (weatherid3 === element) {
               temp = weatherid3;
@@ -114,5 +112,5 @@ const ifBinUeberfordert = (timestamp3, timestamp2, timestamp1, weatherid1, weath
 }
 
 module.exports = {
-    readJSON, writeJSON, sortZeit, sortPrio, priReduziert, zeitpunkt, wetterNummer, ifBinUeberfordert
+    readJSON, writeJSON, sortZeit, sortPrio, prioReduziert, zeitpunkt, wetterNummer, ifBinUeberfordert
 };

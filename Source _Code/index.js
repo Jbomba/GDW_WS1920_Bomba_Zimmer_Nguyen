@@ -17,12 +17,12 @@ const PORT = process.env.PORT || 3000;
 // Ausgabe das der Server startet. (192.168.43.25 IP4 Hotspot einbinden "(app.listen(3000, "192.168.43.25");)" )
 app.listen(PORT, () => console.log(`Server ist auf Port ${PORT} gestartet.`));
 
-var APIKEY = "fc3ac8c5e09a2ca2fcc093b68d6da831";
-var CITY = "Cologne";
-var COUNTY = "276";
+var apikey = "fc3ac8c5e09a2ca2fcc093b68d6da831";
+var city = "Cologne";
+var country = "276";
 
 // Openweathermap URL
-var url = `http://api.openweathermap.org/data/2.5/forecast?q=${CITY},${COUNTY}&units=metric&APPID=${APIKEY}`;
+var url = `http://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&units=metric&APPID=${apikey}`;
 
 app.get("/", (req, res) => {
   request(url, (errror, response, body) => {
@@ -52,21 +52,19 @@ app.get("/", (req, res) => {
       "Es ist am regnen",
       "Es schneit draussen.",
       "Warnung es kann zu Naturkatastropfen kommen.",
-      "Der Himmel ist klar bis bewoelkt."
+      "Der Himmel ist klar bis bewoelkt.",
+      ""
     ];
+
+    var mitarbeiter = mitarbeiterwahl();
 
     var antwort =
       "Die beste Uhrzeit zum Spazierengehen ist: " +
       tempTime +
       " +/- 1,5 Stunden. " +
-      tempArray[temp];
+      tempArray[temp] + " Herrchen/Frauchen ist fuer heute: " + mitarbeiter;
 
-    var arbeiter =
-    guenter = mitarbeiterwahl();
-    guenter+
-        antwort[ guenter]
-
-    res.send(arbeiter);
+    res.send(antwort);
   });
 });
 
@@ -75,24 +73,25 @@ function anwendungslogik(timestamp3, timestamp2, timestamp1, weatherid1, weather
 }
 
   function mitarbeiterwahl() {
-    const arrayAS = ourmodule.readJSON('angestellte.json');
-    const sortedZeitArray = ourmodule.sortZeit(arrayAS);
-    const sortedArray = ourmodule.sortPrio(sortedZeitArray);
+    var angestellten_json = ourmodule.readJSON('angestellte.json');
+    var sortedArray = ourmodule.sortZeit(angestellten_json);
+    //var sortedArray = ourmodule.sortPrio(sortedArray);
        //sortedArray[0] wird als Spaziergaenger gewaehlt.
       var spaziergaenger = sortedArray[0];
        //Array[0] wird entfernt.
       sortedArray.shift();
 
-
-    const reduzArray = ourmodule.priReduziert(sortedArray);
+    var reduzierenArray = ourmodule.prioReduziert(sortedArray);
 
       // Setzt die Prio des Spaziergaengers zurueck.
       spaziergaenger.prio = 10;
       // Fuegt ihn ans ende der Liste an.
-      reduzArray.push(spaziergaenger);
+      //console.log(reduzierenArray);
+      reduzierenArray.push(spaziergaenger);
+      //console.log(reduzierenArray);
       // Array wird wieder zum String
-      dataAS = JSON.stringify(arrayAS);
+      dataAngestellte = JSON.stringify(angestellten_json);
 
-      ourmodule.writeJSON('angestellte.json', dataAS);
+      ourmodule.writeJSON('angestellte.json', dataAngestellte);
     return spaziergaenger.name;
   };
