@@ -2,7 +2,7 @@
 
 How to im lokalen Netzwerk:
 
-1. Die Datei "index.js" in einer Entwicklungsumgebung der Wahl oeffnen.
+1. Die Datei "index.js" im Source_Code Ordner in einer Entwicklungsumgebung der Wahl oeffnen.
 2. Mit dem "npm install X" befehl folgende Module installieren: "moment", "express" und "request". X durch den Namen des Moduls austauschen.
 3. Ein NodeJS Terminal oeffnen.
 4. Den Server mit dem Befehl "node index.js" starten. 
@@ -12,7 +12,7 @@ How to im lokalen Netzwerk:
 
 How to mit 2 Devices:
 
-1. Die Datei "index.js" in einer Entwicklungsumgebung der Wahl oeffnen.
+1. Die Datei "index.js" im Source_Code Ordner in einer Entwicklungsumgebung der Wahl oeffnen.
 2. Mit dem "npm install X" befehl folgende Module installieren: "moment", "express" und "request". X durch den Namen des Moduls austauschen.
 3. Im Code folgende aenderungen vornehmen: 
 	3.1 "app.listen(PORT, () => console.log(`Server ist auf Port ${PORT} gestartet.`));" durch "(app.listen(3000, "XXX.XXX.XX.XX");)"
