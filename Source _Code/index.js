@@ -1,70 +1,12 @@
 const express = require("express");
-const path = require("path");
 const logger = require("./middleware/logger");
 const request = require("request");
-const fs = require("fs");
 const app = express();
+const ourmodule = require ('./ourmodule');
 
-//var weatherid1 = 0;
-//var weatherid2 = 0;
-//var weatherid3 = 0;
-
-var wetterlage = ["8", "3", "6", "5", "2", "7"];
-
-//var spaziergaenger = { id: 0, name: "", deadline: true, prio: 0 };
 
 // Start des Loggers.
 app.use(logger);
-
-function mitarbeiterwahl() {
-  fs.readFile("./angestellte.json", function (err, dataAS) {
-    if (err) {
-      throw err;
-    }
-
-    const arrayAS = JSON.parse(dataAS);
-    //testtemp = arrayAS[0].name;
-
-    var sortedArray = [];
-
-    // Filtern des Arrays Deadline True/False, True wird entfernt.
-    arrayAS.forEach(element => {
-      if (element.deadline == false) {
-        sortedArray.push(element);
-      }
-    });
-
-    // Sort nach Prioritaet. 1 am Anfang des Arrays, 10 am Ende.
-    sortedArray.sort(function (a, b) {
-      return a.prio - b.prio;
-    });
-
-    // Array[0] wird als Spaziergaenger gewaehlt.
-    spaziergaenger = sortedArray[0];
-
-    // Array[0] wird entfernt.
-    sortedArray.shift();
-
-    // Prio anderer Angestellten wird erhoeht.
-    sortedArray.forEach(angestellte => {
-      if (angestellte.prio >= 2) {
-        angestellte.prio--;
-      }
-    });
-
-    // Setzt die Prio des Spaziergaengers zurueck.
-    spaziergaenger.prio = 10;
-
-    // Fuegt ihn ans ende der Liste an.
-    sortedArray.push(spaziergaenger);
-
-    // Array wird wieder zum String
-    dataAS = JSON.stringify(sortedArray);
-
-    fs.writeFileSync("./angestellte.json", dataAS);
-    return spaziergaenger.name;
-  });
-}
 
 // Postman http://192.168.43.25:3000/ fuer Hotspot 2 Device Test oder http://localhost:3000/ fuer Locales Testen.
 
@@ -84,41 +26,21 @@ var url = `http://api.openweathermap.org/data/2.5/forecast?q=${CITY},${COUNTY}&u
 
 app.get("/", (req, res) => {
   request(url, (errror, response, body) => {
-    weather_json = JSON.parse(body);
+    const position1 = 0;
+    const position2 = 1;
+    const position3 = 2;
 
-    var spaziergaenger = { id: 0, name: "", deadline: true, prio: 0 };
+    var weather_json = JSON.parse(body);
 
-    //Erster Termin
-    timestamp1 = weather_json.list[0].dt_txt;
-    //timestamp String Short
-    timestamp1 = timestamp1.substr(11);
-    console.log(timestamp1);
-    weatherid1 = weather_json.list[0].weather[0].id;
-    //Weather ID toString
-    weatherid1 = ("" + weatherid1)[0];
-    console.log(weatherid1);
+    var timestamp1 = ourmodule.zeitpunkt(weather_json, position1);
+    var timestamp2 = ourmodule.zeitpunkt(weather_json, position2);
+    var timestamp3 = ourmodule.zeitpunkt(weather_json, position3);
+  
+    var weatherid1 = ourmodule.wetterNummer(weather_json, position1);
+    var weatherid2 = ourmodule.wetterNummer(weather_json, position2);
+    var weatherid3 = ourmodule.wetterNummer(weather_json, position3);
 
-    //Zweiter Termin
-    timestamp2 = weather_json.list[1].dt_txt;
-    //timestamp String Short
-    timestamp2 = timestamp2.substr(11);
-    console.log(timestamp2);
-    weatherid2 = weather_json.list[1].weather[0].id;
-    //Weather ID toString
-    weatherid2 = ("" + weatherid2)[0];
-    console.log(weatherid2);
-
-    //Dritter Termin
-    timestamp3 = weather_json.list[2].dt_txt;
-    //timestamp String Short
-    timestamp3 = timestamp3.substr(11);
-    console.log(timestamp3);
-    weatherid3 = weather_json.list[2].weather[0].id;
-    //Weather ID toString
-    weatherid3 = ("" + weatherid3)[0];
-    console.log(weatherid3);
-
-    anwendungslogik();
+    anwendungslogik(timestamp3, timestamp2, timestamp1, weatherid1, weatherid2, weatherid3);
     mitarbeiterwahl();
 
     var tempArray = [
@@ -139,50 +61,38 @@ app.get("/", (req, res) => {
       " +/- 1,5 Stunden. " +
       tempArray[temp];
 
-    res.send(antwort);
+    var arbeiter =
+    guenter = mitarbeiterwahl();
+    guenter+
+        antwort[ guenter]
+
+    res.send(arbeiter);
   });
 });
 
-function anwendungslogik() {
-  badTimings = ["21:00:00", "00:00:00"];
-  if (timestamp3 === "06:00:00") {
-    tempTime = "Ausserhalb der Arbeitszeit"
-  } else {
-    if (timestamp3 === "03:00:00") {
-      tempTime = "Ausserhalb der Arbeitszeit"
-    } else {
-      badTimings.forEach(element => {
-        if (timestamp3 === element) {
-          weatherid3 = weatherid2;
-          timestamp3 = timestamp2;
-          console.log("Test Weather");
-          console.log(timestamp3);
-        }
-      })
-      badTimings.forEach(element => {
-        if (timestamp3 === element) {
-          weatherid2 = weatherid1;
-          timestamp2 = timestamp1;
-        } else { //Wetter abfrage nach Clear/Cloud
-          wetterlage.forEach(element => {
-            if (weatherid3 === element) {
-              temp = weatherid3;
-              tempTime = timestamp3;
-            } else {
-              if (weatherid2 === element) {
-                temp = weatherid2;
-                tempTime = timestamp2;
-              } else {
-                if (weatherid1 === element) {
-                  temp = weatherid1;
-                  tempTime = timestamp1;
-                }
-              }
-            }
-          });
-        }
-      })
-    }
-  }
-
+function anwendungslogik(timestamp3, timestamp2, timestamp1, weatherid1, weatherid2, weatherid3) {
+  ourmodule.ifBinUeberfordert(timestamp3, timestamp2, timestamp1, weatherid1, weatherid2, weatherid3);  
 }
+
+  function mitarbeiterwahl() {
+    const arrayAS = ourmodule.readJSON('angestellte.json');
+    const sortedZeitArray = ourmodule.sortZeit(arrayAS);
+    const sortedArray = ourmodule.sortPrio(sortedZeitArray);
+       //sortedArray[0] wird als Spaziergaenger gewaehlt.
+      var spaziergaenger = sortedArray[0];
+       //Array[0] wird entfernt.
+      sortedArray.shift();
+
+
+    const reduzArray = ourmodule.priReduziert(sortedArray);
+
+      // Setzt die Prio des Spaziergaengers zurueck.
+      spaziergaenger.prio = 10;
+      // Fuegt ihn ans ende der Liste an.
+      reduzArray.push(spaziergaenger);
+      // Array wird wieder zum String
+      dataAS = JSON.stringify(arrayAS);
+
+      ourmodule.writeJSON('angestellte.json', dataAS);
+    return spaziergaenger.name;
+  };
