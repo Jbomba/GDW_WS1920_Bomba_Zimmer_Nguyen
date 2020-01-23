@@ -32,45 +32,15 @@ app.get("/", (req, res) => {
 
     var weather_json = JSON.parse(body);
 
-    /*//Erster Termin
-    timestamp1 = weather_json.list[0].dt_txt;
-    //timestamp String Short
-    timestamp1 = timestamp1.substr(11);
-    console.log(timestamp1);
-    weatherid1 = weather_json.list[0].weather[0].id;
-    //Weather ID toString
-    weatherid1 = ("" + weatherid1)[0];
-    console.log(weatherid1);
-*/
-
+    var timestamp1 = ourmodule.zeitpunkt(weather_json, position1);
+    var timestamp2 = ourmodule.zeitpunkt(weather_json, position2);
+    var timestamp3 = ourmodule.zeitpunkt(weather_json, position3);
+  
     var weatherid1 = ourmodule.wetterNummer(weather_json, position1);
     var weatherid2 = ourmodule.wetterNummer(weather_json, position2);
     var weatherid3 = ourmodule.wetterNummer(weather_json, position3);
-    console.log(timestamp3);
 
-    /*
-    //Zweiter Termin
-    timestamp2 = weather_json.list[1].dt_txt;
-    //timestamp String Short
-    timestamp2 = timestamp2.substr(11);
-    console.log(timestamp2);
-    weatherid2 = weather_json.list[1].weather[0].id;
-    //Weather ID toString
-    weatherid2 = ("" + weatherid2)[0];
-    console.log(weatherid2);
-
-    //Dritter Termin
-    timestamp3 = weather_json.list[2].dt_txt;
-    //timestamp String Short
-    timestamp3 = timestamp3.substr(11);
-    console.log(timestamp3);
-    weatherid3 = weather_json.list[2].weather[0].id;
-    //Weather ID toString
-    weatherid3 = ("" + weatherid3)[0];
-    console.log(weatherid3);
-    */
-
-    anwendungslogik();
+    anwendungslogik(timestamp3, timestamp2, timestamp1, weatherid1, weatherid2, weatherid3);
     mitarbeiterwahl();
 
     var tempArray = [
@@ -91,54 +61,17 @@ app.get("/", (req, res) => {
       " +/- 1,5 Stunden. " +
       tempArray[temp];
 
-    res.send(antwort);
+    var arbeiter =
+    guenter = mitarbeiterwahl();
+    guenter+
+        antwort[ guenter]
+
+    res.send(arbeiter);
   });
 });
 
-function anwendungslogik() {
-  console.log(timestamp3);
-  var wetterlage = ["8", "3", "6", "5", "2", "7"];
-  temp  = 0;
-  badTimings = ["21:00:00", "00:00:00"];
-  if (timestamp3 === "06:00:00") {
-    tempTime = "Ausserhalb der Arbeitszeit"
-  } else {
-    if (timestamp3 === "03:00:00") {
-      tempTime = "Ausserhalb der Arbeitszeit"
-    } else {
-      badTimings.forEach(element => {
-        if (timestamp3 === element) {
-          weatherid3 = weatherid2;
-          timestamp3 = timestamp2;
-          console.log("Test Weather");
-          console.log(timestamp3);
-        }
-      })
-      badTimings.forEach(element => {
-        if (timestamp3 === element) {
-          weatherid2 = weatherid1;
-          timestamp2 = timestamp1;
-        } else { //Wetter abfrage nach Clear/Cloud
-          wetterlage.forEach(element => {
-            if (weatherid3 === element) {
-              temp = weatherid3;
-              tempTime = timestamp3;
-            } else {
-              if (weatherid2 === element) {
-                temp = weatherid2;
-                tempTime = timestamp2;
-              } else {
-                if (weatherid1 === element) {
-                  temp = weatherid1;
-                  tempTime = timestamp1;
-                }
-              }
-            }
-          });
-        }
-      })
-    }
-  }
+function anwendungslogik(timestamp3, timestamp2, timestamp1, weatherid1, weatherid2, weatherid3) {
+  ourmodule.ifBinUeberfordert(timestamp3, timestamp2, timestamp1, weatherid1, weatherid2, weatherid3);  
 }
 
   function mitarbeiterwahl() {
