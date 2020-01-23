@@ -1,7 +1,7 @@
 const fs = require('fs');
 function callback(){};
 
-/*
+
 const readJSON = ( path ) => {
     try {
     fs.readFile(path,'utf8', callback);
@@ -47,7 +47,7 @@ const prioReduziert = (array) => {
   });
   return array;
 }
-*/
+
 
 // Zeitpunkte herraussuchen
 const zeitpunkt = (array, position) => {

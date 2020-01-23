@@ -41,7 +41,6 @@ app.get("/", (req, res) => {
     var weatherid3 = ourmodule.wetterNummer(weather_json, position3);
 
     anwendungslogik(timestamp3, timestamp2, timestamp1, weatherid1, weatherid2, weatherid3);
-    mitarbeiterwahl();
 
     var tempArray = [
       "Error Fehlerhafte Wetterrueckmeldung!",
@@ -74,6 +73,7 @@ function anwendungslogik(timestamp3, timestamp2, timestamp1, weatherid1, weather
 
   function mitarbeiterwahl() {
     var angestellten_json = ourmodule.readJSON('angestellte.json');
+    console.log(angestellten_json);
     var sortedArray = ourmodule.sortZeit(angestellten_json);
     //var sortedArray = ourmodule.sortPrio(sortedArray);
        //sortedArray[0] wird als Spaziergaenger gewaehlt.
