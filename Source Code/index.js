@@ -14,37 +14,28 @@ var wetterlage = ["8", "3", "6", "5", "2", "7"];
 app.use(logger);
 
 function mitarbeiterwahl() {
-  const arrayAS = JSONReader.readJSON('angestellte.json');
-
-  var sortedZeitArray = JSONReader.sortZeit(arrayAS);
-  var sortedArray = JSONReader.sortPrio(sortedZeitArray);
-
-  // sortedArray[0] wird als Spaziergaenger gewaehlt.
-  var spaziergaenger = sortedArray[0];
-
-  // Array[0] wird entfernt.
-  sortedArray.shift();
+    const arrayAS = JSONReader.readJSON('angestellte.json');
+    //const sortedZeitArray = JSONReader.sortZeit(arrayAS);
+    //const sortedArray = JSONReader.sortPrio(sortedZeitArray);
+      // sortedArray[0] wird als Spaziergaenger gewaehlt.
+      //var spaziergaenger = sortedArray[0];
+      // Array[0] wird entfernt.
+      //sortedArray.shift();
 
 
-  sortedArray = JSONReader.priReduziert(sortedArray)
+    //const reduzArray = JSONReader.priReduziert(sortedArray);
 
+      // Setzt die Prio des Spaziergaengers zurueck.
+      //spaziergaenger.prio = 10;
+      // Fuegt ihn ans ende der Liste an.
+      //reduzArray.push(spaziergaenger);
+      // Array wird wieder zum String
+      dataAS = JSON.stringify(arrayAS);
 
-  // Setzt die Prio des Spaziergaengers zurueck.
-  spaziergaenger.prio = 10;
-
-  // Fuegt ihn ans ende der Liste an.
-  sortedArray.push(spaziergaenger);
-
-    // Array wird wieder zum String
-    dataAS = JSON.stringify(sortedArray);
-
-
-    JSONReader.writeJSON('angestellte.json', dataAS);
-    //fs.writeFileSync("./angestellte.json", dataAS);
-    return spaziergaenger.name;
+      JSONReader.writeJSON('angestellte.json', dataAS);
+      //fs.writeFileSync("./angestellte.json", dataAS);
+    //return spaziergaenger.name;
   };
-
-
 // Postman http://192.168.43.25:3000/ fuer Hotspot 2 Device Test oder http://localhost:3000/ fuer Locales Testen.
 
 // Server wird vermutlich nicht auf Port 3000 laufen deswegen checken wir die Envirement Variable dann erst Port 3000.
