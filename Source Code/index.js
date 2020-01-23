@@ -1,41 +1,13 @@
 const express = require("express");
-const path = require("path");
 const logger = require("./middleware/logger");
 const request = require("request");
-const fs = require("fs");
 const app = express();
-const JSONReader = require ('./ourmodule');
-
-
-var wetterlage = ["8", "3", "6", "5", "2", "7"];
+const ourmodule = require ('./ourmodule');
 
 
 // Start des Loggers.
 app.use(logger);
 
-function mitarbeiterwahl() {
-    const arrayAS = JSONReader.readJSON('angestellte.json');
-    //const sortedZeitArray = JSONReader.sortZeit(arrayAS);
-    //const sortedArray = JSONReader.sortPrio(sortedZeitArray);
-      // sortedArray[0] wird als Spaziergaenger gewaehlt.
-      //var spaziergaenger = sortedArray[0];
-      // Array[0] wird entfernt.
-      //sortedArray.shift();
-
-
-    //const reduzArray = JSONReader.priReduziert(sortedArray);
-
-      // Setzt die Prio des Spaziergaengers zurueck.
-      //spaziergaenger.prio = 10;
-      // Fuegt ihn ans ende der Liste an.
-      //reduzArray.push(spaziergaenger);
-      // Array wird wieder zum String
-      dataAS = JSON.stringify(arrayAS);
-
-      JSONReader.writeJSON('angestellte.json', dataAS);
-      //fs.writeFileSync("./angestellte.json", dataAS);
-    //return spaziergaenger.name;
-  };
 // Postman http://192.168.43.25:3000/ fuer Hotspot 2 Device Test oder http://localhost:3000/ fuer Locales Testen.
 
 // Server wird vermutlich nicht auf Port 3000 laufen deswegen checken wir die Envirement Variable dann erst Port 3000.
@@ -54,11 +26,13 @@ var url = `http://api.openweathermap.org/data/2.5/forecast?q=${CITY},${COUNTY}&u
 
 app.get("/", (req, res) => {
   request(url, (errror, response, body) => {
-    weather_json = JSON.parse(body);
+    const position1 = 0;
+    const position2 = 1;
+    const position3 = 2;
 
-    var spaziergaenger = { id: 0, name: "", deadline: true, prio: 0 };
+    var weather_json = JSON.parse(body);
 
-    //Erster Termin
+    /*//Erster Termin
     timestamp1 = weather_json.list[0].dt_txt;
     //timestamp String Short
     timestamp1 = timestamp1.substr(11);
@@ -67,7 +41,14 @@ app.get("/", (req, res) => {
     //Weather ID toString
     weatherid1 = ("" + weatherid1)[0];
     console.log(weatherid1);
+*/
 
+    var timestamp1 = ourmodule.wetterNummer(weather_json, position1);
+    var timestamp2 = ourmodule.wetterNummer(weather_json, position2);
+    var timestamp3 = ourmodule.wetterNummer(weather_json, position3);
+    console.log(timestamp3);
+
+    /*
     //Zweiter Termin
     timestamp2 = weather_json.list[1].dt_txt;
     //timestamp String Short
@@ -87,8 +68,9 @@ app.get("/", (req, res) => {
     //Weather ID toString
     weatherid3 = ("" + weatherid3)[0];
     console.log(weatherid3);
+    */
 
-    anwendungslogik();
+    anwendungslogik(timestamp1, timestamp2, timestamp3);
     mitarbeiterwahl();
 
     var tempArray = [
@@ -113,7 +95,10 @@ app.get("/", (req, res) => {
   });
 });
 
-function anwendungslogik() {
+function anwendungslogik(timestamp1, timestamp2, timestamp3) {
+  console.log(timestamp3);
+  var wetterlage = ["8", "3", "6", "5", "2", "7"];
+  temp  = 0;
   badTimings = ["21:00:00", "00:00:00"];
   if (timestamp3 === "06:00:00") {
     tempTime = "Ausserhalb der Arbeitszeit"
@@ -154,5 +139,27 @@ function anwendungslogik() {
       })
     }
   }
-
 }
+
+  function mitarbeiterwahl() {
+    const arrayAS = ourmodule.readJSON('angestellte.json');
+    const sortedZeitArray = ourmodule.sortZeit(arrayAS);
+    const sortedArray = ourmodule.sortPrio(sortedZeitArray);
+       //sortedArray[0] wird als Spaziergaenger gewaehlt.
+      var spaziergaenger = sortedArray[0];
+       //Array[0] wird entfernt.
+      sortedArray.shift();
+
+
+    const reduzArray = ourmodule.priReduziert(sortedArray);
+
+      // Setzt die Prio des Spaziergaengers zurueck.
+      spaziergaenger.prio = 10;
+      // Fuegt ihn ans ende der Liste an.
+      reduzArray.push(spaziergaenger);
+      // Array wird wieder zum String
+      dataAS = JSON.stringify(arrayAS);
+
+      ourmodule.writeJSON('angestellte.json', dataAS);
+    return spaziergaenger.name;
+  };

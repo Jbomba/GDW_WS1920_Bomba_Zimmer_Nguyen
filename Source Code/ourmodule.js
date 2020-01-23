@@ -51,7 +51,20 @@ const priReduziert = ( array ) => {
   return array;
 }
 
+const wetterNummer = (array, position) => {
+//Erster Termin
+timestamp1 = array.list[position].dt_txt;
+//timestamp String Short
+timestamp1 = timestamp1.substr(11);
+console.log(timestamp1);
+weatherid1 = array.list[0].weather[0].id;
+//Weather ID toString
+weatherid1 = ("" + weatherid1)[0];
+console.log(weatherid1);
+
+return weatherid1;
+}
 
 module.exports = {
-    readJSON, writeJSON, sortZeit, sortPrio, priReduziert
+    readJSON, writeJSON, sortZeit, sortPrio, priReduziert, wetterNummer
 };
