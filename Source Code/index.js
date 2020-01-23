@@ -7,13 +7,8 @@ const app = express();
 const JSONReader = require ('./ourmodule');
 
 
-//var weatherid1 = 0;
-//var weatherid2 = 0;
-//var weatherid3 = 0;
-
 var wetterlage = ["8", "3", "6", "5", "2", "7"];
 
-//var spaziergaenger = { id: 0, name: "", deadline: true, prio: 0 };
 
 // Start des Loggers.
 app.use(logger);
@@ -21,40 +16,24 @@ app.use(logger);
 function mitarbeiterwahl() {
   const arrayAS = JSONReader.readJSON('angestellte.json');
 
-    //testtemp = arrayAS[0].name;
+  var sortedZeitArray = JSONReader.sortZeit(arrayAS);
+  var sortedArray = JSONReader.sortPrio(sortedZeitArray);
 
-    var sortedArray = [];
+  // sortedArray[0] wird als Spaziergaenger gewaehlt.
+  var spaziergaenger = sortedArray[0];
 
-    // Filtern des Arrays Deadline True/False, True wird entfernt.
-    arrayAS.forEach(element => {
-      if (element.deadline == false) {
-        sortedArray.push(element);
-      }
-    });
+  // Array[0] wird entfernt.
+  sortedArray.shift();
 
-    // Sort nach Prioritaet. 1 am Anfang des Arrays, 10 am Ende.
-    sortedArray.sort(function (a, b) {
-      return a.prio - b.prio;
-    });
 
-    // Array[0] wird als Spaziergaenger gewaehlt.
-    spaziergaenger = sortedArray[0];
+  sortedArray = JSONReader.priReduziert(sortedArray)
 
-    // Array[0] wird entfernt.
-    sortedArray.shift();
 
-    // Prio anderer Angestellten wird erhoeht.
-    sortedArray.forEach(angestellte => {
-      if (angestellte.prio >= 2) {
-        angestellte.prio--;
-      }
-    });
+  // Setzt die Prio des Spaziergaengers zurueck.
+  spaziergaenger.prio = 10;
 
-    // Setzt die Prio des Spaziergaengers zurueck.
-    spaziergaenger.prio = 10;
-
-    // Fuegt ihn ans ende der Liste an.
-    sortedArray.push(spaziergaenger);
+  // Fuegt ihn ans ende der Liste an.
+  sortedArray.push(spaziergaenger);
 
     // Array wird wieder zum String
     dataAS = JSON.stringify(sortedArray);
