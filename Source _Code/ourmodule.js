@@ -20,22 +20,22 @@ const writeJSON = (path, file) => {
 
 // Filtern des Arrays Deadline True/False, True wird entfernt.
 const sortZeit = (array) => {
-//var sortedArray = [];
+var sortedArray = [];
 array.forEach(element => {
     if (element.deadline == false) {
-      array.push(element);
+      sortedArray.push(element);
     }
   });
-return array;
+return sortedArray;
 }
 
 // Sort nach Prioritaet. 1 am Anfang des Arrays, 10 am Ende.
 const sortPrio = (array) => {
-  //var tempArray = [];
+  var tempArray = [];
 array.sort(function (a, b) {
-    array.push(a.prio - b.prio);
+  tempArray.push(a.prio - b.prio);
   });
-  return array
+  return tempArray
 }
 
 // Prio anderer Angestellten wird erhoeht.
@@ -68,7 +68,7 @@ return weatherid;
 
 const ifBinUeberfordert = (timestamp3, timestamp2, timestamp1, weatherid1, weatherid2, weatherid3) => {
   var wetterlage = ["8", "3", "6", "5", "2", "7"];
-  temp  = 0;
+  temp  = "9";
   badTimings = ["21:00:00", "00:00:00"];
   if (timestamp3 === "06:00:00") {
     tempTime = "Ausserhalb der Arbeitszeit"

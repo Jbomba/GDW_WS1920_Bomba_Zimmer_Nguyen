@@ -73,9 +73,9 @@ function anwendungslogik(timestamp3, timestamp2, timestamp1, weatherid1, weather
 
   function mitarbeiterwahl() {
     var angestellten_json = ourmodule.readJSON('angestellte.json');
-    console.log(angestellten_json);
     var sortedArray = ourmodule.sortZeit(angestellten_json);
     //var sortedArray = ourmodule.sortPrio(sortedArray);
+    console.log(sortedArray);
        //sortedArray[0] wird als Spaziergaenger gewaehlt.
       var spaziergaenger = sortedArray[0];
        //Array[0] wird entfernt.
